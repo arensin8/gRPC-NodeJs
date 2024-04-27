@@ -1,0 +1,16 @@
+syntax "proto3";
+
+message EchoMessage {
+    string value = 1;
+}
+
+//unary , it means the simple req,res (req => res <=)
+//clientStream , data stream => server
+//serverStream , data stream => client
+//bidiStream , data stream => server , server data stream => client
+service EchoService {
+    rpc EchoUnary (EchoMessage) returns (EchoMessage);
+    rpc EchoClinetStream (stream EchoMessage) returns (EchoMessage);
+    rpc EchoServerStream (EchoMessage) returns (stream EchoMessage);
+    rpc EchoBidiStream (stream EchoMessage) returns (stream EchoMessage);
+}
