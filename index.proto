@@ -1,0 +1,29 @@
+synatx = "proto3";
+import "./course.proto"
+
+message MyMessage {
+    int32 id = 1;
+    string firstName = 2;
+    //reserved 2,3 or reserved "first_name" if we want to reserve tags or fields
+    string lastName = 3;
+    bool isActive = 4;
+    bytes image = 5; //the image field
+    repeated string phoneNumbers = 6; //array of string for phone numbers
+    enum Skills = {
+        PROGRAMMER = 0;
+        FRONTEND = 1;
+        BACKEND = 2;
+        CLOUD = 3;
+    }
+    Skills skill = 7;
+    Date birthdate = 8;
+    packageCourse.Course course = 9;
+}
+
+message Date {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+    int32 weak = 4;
+    string time = 5;
+}
