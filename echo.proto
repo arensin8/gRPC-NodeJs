@@ -1,4 +1,5 @@
-syntax "proto3";
+syntax = "proto3";
+package echoPackage;
 
 message EchoMessage {
     string value = 1;
