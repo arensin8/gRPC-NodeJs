@@ -1,9 +1,14 @@
 syntax = "proto3";
 package echoPackage;
 
+
 message EchoMessage {
     string value = 1;
 }
+message EchosList {
+    repeated EchoMessage value = 1;
+}
+message Empty {}
 
 //unary , it means the simple req,res (req => res <=)
 //clientStream , data stream => server
@@ -11,7 +16,7 @@ message EchoMessage {
 //bidiStream , data stream => server , server data stream => client
 service EchoService {
     rpc EchoUnary (EchoMessage) returns (EchoMessage);
-    rpc EchoClinetStream (stream EchoMessage) returns (EchoMessage);
-    rpc EchoServerStream (EchoMessage) returns (stream EchoMessage);
+    rpc EchoClinetStream (stream EchosList) returns (EchoMessage);
+    rpc EchoServerStream (Empty) returns (stream EchoMessage);
     rpc EchoBidiStream (stream EchoMessage) returns (stream EchoMessage);
 }
